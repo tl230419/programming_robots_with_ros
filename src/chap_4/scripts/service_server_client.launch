@@ -1,4 +1,0 @@
-<launch>
-  <node name="service_server" pkg="chap_4" type="service_server.py" output="screen"/>
-  <node name="service_client" pkg="chap_4" type="service_client.py" output="screen"/>
-</launch>
