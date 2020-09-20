@@ -1,4 +1,4 @@
-build/
-devel/
+*/build/
+*/devel/
 src/.vscode/
-.catkin_workspace
+*/.catkin_workspace
