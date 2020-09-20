@@ -17,3 +17,8 @@ catkin_install_python(PROGRAMS
     scripts/red_light_green_light.py
     DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/red_light_green_light
 )
+
+catkin_install_python(PROGRAMS
+    scripts/chap_8/key_publisher.py
+    DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/red_light_green_light
+)
