@@ -6,10 +6,15 @@
     <arg name="cam_info_topic" default="/head_camera/rgb/camera_info"/>
     <arg name="output_frame" default="/base_link"/>
     <node name="ar_track_alvar" pkg="ar_track_alvar"
-        type="individualMarkersNoKinect" respawn="false" output="screen"
-        args="$(arg marker_size) $(arg max_new_marker_error) \
-            $(arg max_track_error) $(arg cam_image_topic) \
-            $(arg cam_info_topic) $(arg output_frame)" />
+        type="individualMarkersNoKinect" respawn="false" output="screen">
+        <param name="marker_size"   type="double" value="$(arg marker_size)"/>
+        <param name="max_new_marker_error"  type="double" value="$(arg max_new_marker_error)"/>
+        <param name="max_track_error"   type="double" value="$(arg max_track_error)"/>
+        <param name="output_frame"  type="string" value="$(arg output_frame)"/>
+
+        <remap from="camera_image" to="$(arg cam_image_topic)"/>
+        <remap from="camera_info" to="$(arg cam_info_topic)"/>
+  </node>
 
     <arg name="tag_rot" default="0 0 0 0 0 -1.57"/>
     <arg name="tag_trans" default="0 -0.28 -0.1 0 0 0"/>
@@ -37,7 +42,7 @@
     <node pkg="tf" type="static_transform_publisher" name="ar_10_up"
         args="$(arg tag_rot) ar_marker_10 ar_10_up 100"/>
     <node pkg="tf" type="static_transform_publisher" name="ar_11_up"
-        args="$(arg tag_rot) ar_marker_11 ar_0_up 100"/>
+        args="$(arg tag_rot) ar_marker_11 ar_11_up 100"/>
 
     <node pkg="tf" type="static_transform_publisher" name="item_0"
         args="$(arg tag_trans) ar_0_up item_0 100"/>
@@ -62,5 +67,5 @@
     <node pkg="tf" type="static_transform_publisher" name="item_10"
         args="$(arg tag_trans) ar_10_up item_10 100"/>
     <node pkg="tf" type="static_transform_publisher" name="item_11"
-        args="$(arg tag_trans) ar_0_up item_11 100"/>
+        args="$(arg tag_trans) ar_11_up item_11 100"/>
 </launch>
