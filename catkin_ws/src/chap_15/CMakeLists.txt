@@ -6,6 +6,7 @@ find_package(catkin REQUIRED COMPONENTS
     std_msgs
     geometry_msgs
     message_generation
+    actionlib_msgs
 )
 
 add_service_files(
@@ -13,12 +14,21 @@ add_service_files(
     srv
     FILES
     FakeSensor.srv
+    Light.srv
+)
+
+add_action_files(
+    DIRECTORY
+    action
+    FILES
+    Rotation.action
 )
 
 generate_messages(
     DEPENDENCIES
     std_msgs
     geometry_msgs
+    actionlib_msgs
 )
 
 catkin_package(
@@ -26,9 +36,12 @@ catkin_package(
     std_msgs
     geometry_msgs
     message_runtime
+    actionlib_msgs
 )
 
 catkin_install_python(PROGRAMS
     scripts/service_sensor.py
+    scripts/actuator.py
+    scripts/service_light_client.py
     DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/service_sensor
 )
