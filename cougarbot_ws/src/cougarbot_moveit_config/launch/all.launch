@@ -1,0 +1,7 @@
+<launch>
+    <include file="$(find cougarbot)/cougarbot.launch"/>
+    <include file="$(find cougarbot_moveit_config)/launch/move_group.launch"/>
+    <include find="$(find cougarbot_moveit_config)/launch/moveit_rviz.launch">
+        <arg name="config" value="True"/>
+    </include>
+</launch>
